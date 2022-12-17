@@ -24,19 +24,12 @@ font=("Helvetica", 20),
 #MainLabel.grid(row = 0, column = 1)
 MainLabel.pack(side="top")
 
+#%%
 ##################### Secondary label #######################
 
-# Second_label = tkinter.Label(window, 
-# text = displayed_phrase,
-# bg = '#FF6501',
-# font=("Helvetica", 11),
-# fg = '#0C0E13'
-# )
-
-# Secondary label placing
-#Second_label.grid(row = 1, column = 0)
 
 
 
+#%%
 window.mainloop()
 # %%
