@@ -1,7 +1,19 @@
 #%% Importing libraries
 import os
 import random
-#%%
+import tkinter
+import time
+#%% Graphic User interphase definition
+window = tkinter.Tk()
+# This places the main window on top of other programs
+window.attributes('-topmost',True)
+window.geometry("700x100")
+window.title("QuickGlance")
+window.configure(bg='#DDE4EA')
+# Time variable (ms)
+time_delay = 3000
+
+# OOP algorithm
 class base:
     #Variables
     def __init__(self, fileObject):
@@ -9,7 +21,22 @@ class base:
         self.__lines = 0
         self.__randomList = []
         self.__lineDisplayed = []
-        
+        self.MainLabel = tkinter.Label(window, 
+        text = "This is a test",
+        bg = '#EAC950',
+        font=("Helvetica", 20),
+        #fg = '#EAC950' This sets font color
+        )
+        self.MainLabel.pack(side="top")  
+
+    def update_label(self,x=0):
+        #Stop condition
+        if x < self.lines:
+            self.MainLabel.config(text = self.lineDisplayed[x])
+            x+=1
+        else: x=0
+        window.after(time_delay, lambda: self.update_label(x))
+ 
     #__fileObject getter 
     @property
     def fileObject(self):
@@ -50,12 +77,15 @@ class base:
     def randomList(self):
         numbers = random.sample(range(0, self.lines), self.lines)
         self.randomList = numbers
+
     def displayLine(self):
         output = []
         reading =  self.fileObject
         for n in self.randomList:
             output.append(reading[n].strip())
         self.lineDisplayed = output
+    
+
 
 ################################################################
 #%% File name to be read
@@ -69,11 +99,10 @@ Main_object.counter()
 Main_object.randomList()
 # Displays random lines
 Main_object.displayLine()
-
+#This function changes the label phrase
+window.after(time_delay, lambda: Main_object.update_label())
 # Testing
-print(Main_object.lines)
-print(Main_object.randomList)
 print(Main_object.lineDisplayed)
- 
-    
+#%%
+window.mainloop()   
 # %%
