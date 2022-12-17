@@ -2,16 +2,17 @@
 import os
 import random
 import tkinter
+from tkinter import *
 
 #%% Graphic User interphase definition
 window = tkinter.Tk()
 # This places the main window on top of other programs
 window.attributes('-topmost',True)
+window.attributes('-alpha',0.85)
 window.geometry("700x80")
-window.title("QuickGlance")
+window.title("QuickGlance V1.0")
 window.configure(bg='#DDE4EA')
-# Time variable (ms)
-
+window.iconbitmap('image.ico')
 
 # OOP algorithm
 class base:
@@ -23,7 +24,7 @@ class base:
         self.__lineDisplayed = []
 
         self.MainLabel = tkinter.Label(window, 
-            text = "This is a test",
+            text = "Enjoy your study session",
             bg = '#EAC950',
             font=("Helvetica", 14),)
         self.MainLabel.pack(side="top")  
@@ -118,6 +119,6 @@ Main_object.update_label()
 
 # Testing
 print(Main_object.lineDisplayed)
-#%%
+
 window.mainloop()   
 # %%
