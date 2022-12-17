@@ -6,14 +6,26 @@ from tkinter import *
 
 #%% Graphic User interphase definition
 window = tkinter.Tk()
-# This places the main window on top of other programs
+
+#This function allows us to use py-to-exe program to generate a onefile program
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+
+#%% This places the main window on top of other programs
 window.attributes('-topmost',True)
 window.attributes('-alpha',0.85)
 window.geometry("700x80")
 window.title("QuickGlance V1.0")
 window.configure(bg='#DDE4EA')
-window.iconbitmap('image.ico')
-
+path = resource_path('image.ico')
+window.iconbitmap(path)
 # OOP algorithm
 class base:
     #Variables
@@ -119,6 +131,9 @@ Main_object.update_label()
 
 # Testing
 print(Main_object.lineDisplayed)
+
+
+
 
 window.mainloop()   
 # %%
