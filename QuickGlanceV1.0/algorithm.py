@@ -3,6 +3,7 @@ import os
 import random
 import tkinter
 from tkinter import *
+import tkinter.filedialog
 
 #%% Graphic User interphase definition
 window = tkinter.Tk()
@@ -20,7 +21,7 @@ def resource_path(relative_path):
 
 #%% This places the main window on top of other programs
 window.attributes('-topmost',True)
-window.attributes('-alpha',0.85)
+window.attributes('-alpha',0.9)
 window.geometry("700x80")
 window.title("QuickGlance V1.0")
 window.configure(bg='#DDE4EA')
@@ -115,25 +116,29 @@ class base:
 
 ################################################################
 
+#Function to call the file location
+def open_file():
+    file_location = tkinter.filedialog.askopenfilename(initialdir ='.',
+                                                title = "Please select your txt file",
+                                                filetypes = (('text','*txt'),('All files','*.')))
+    return file_location
+
 #%% File name to be read
-fileName = 'file.txt'
-fileObjectX = open(fileName, 'r', encoding="utf-8")
-Main_object = base(fileObjectX)
+try:
+    fileName = open_file()
+    fileObjectX = open(fileName, 'r', encoding="utf-8")
+    Main_object = base(fileObjectX)
 
 # Counts the amount of lines in the file
-Main_object.counter()
+    Main_object.counter()
 # Generates random numbers list 
-Main_object.randomList()
+    Main_object.randomList()
 # Displays random lines
-Main_object.displayLine()
+    Main_object.displayLine()
 #This function changes the label phrase
-Main_object.update_label()
-
-# Testing
-print(Main_object.lineDisplayed)
-
-
-
+    Main_object.update_label()
+except: 
+    window.destroy()
 
 window.mainloop()   
 # %%
