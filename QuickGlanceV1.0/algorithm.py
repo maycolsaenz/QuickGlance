@@ -126,6 +126,11 @@ def open_file():
 #%% File name to be read
 try:
     fileName = open_file()
+# Getting the file name to update window.title
+    words = fileName.split('/')
+# Updates window.title
+    window.title("QuickGlance V1.0" +" "+ '(' + words[-1]+')')
+  
     fileObjectX = open(fileName, 'r', encoding="utf-8")
     Main_object = base(fileObjectX)
 
