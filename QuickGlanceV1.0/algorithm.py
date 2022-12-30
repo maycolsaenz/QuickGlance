@@ -49,6 +49,7 @@ class base:
             orient='horizontal',
             bg = '#E36476')
         self.bar.pack(side="top") 
+        self.bar.set(10)
         #self.bar.grid(row = 2, column = 1)
         
 
