@@ -49,6 +49,7 @@ class base:
             orient='horizontal',
             bg = '#E36476')
         self.bar.pack(side="top") 
+        self.bar.set(10)
         #self.bar.grid(row = 2, column = 1)
         
 
@@ -126,6 +127,11 @@ def open_file():
 #%% File name to be read
 try:
     fileName = open_file()
+# Getting the file name to update window.title
+    words = fileName.split('/')
+# Updates window.title
+    window.title("QuickGlance V1.0" +" "+ '(' + words[-1]+')')
+  
     fileObjectX = open(fileName, 'r', encoding="utf-8")
     Main_object = base(fileObjectX)
 
